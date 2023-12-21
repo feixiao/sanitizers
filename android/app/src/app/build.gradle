@@ -11,6 +11,28 @@ android {
         versionCode 1
         versionName "1.2"
         manifestPlaceholders = [ gwpAsanMode: 'default', memtagMode: 'default' ]
+
+        //这里指定cpu架构
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+//        externalNativeBuild {
+//            cmake {
+//                arguments "-DANDROID_ARM_MODE=arm"
+//                cppFlags "-fsanitize=address -fno-omit-frame-pointer"
+//            }
+//        }
+
+
+
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['src/main/jniLibs']
+            }
+        }
+
+
     }
 
     buildTypes {
